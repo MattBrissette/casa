@@ -20,9 +20,9 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Alpine JS Villa State Definition -->
+    <!-- Alpine JS Villa State Definition & Registration -->
     <script>
-        window.villaApp = function() {
+        function createVillaApp() {
             return {
                 isScrolled: false,
                 mobileMenuOpen: false,
@@ -76,13 +76,14 @@
 
                 setHeroSlide(idx) {
                     this.activeHeroIndex = idx;
+                    this.startHeroAutoplay();
                 },
 
                 startHeroAutoplay() {
-                    if (this.heroTimer) clearInterval(this.heroTimer);
+                    this.pauseHeroAutoplay();
                     this.heroTimer = setInterval(() => {
                         this.activeHeroIndex = (this.activeHeroIndex + 1) % this.heroSlides.length;
-                    }, 5000);
+                    }, 4000);
                 },
 
                 pauseHeroAutoplay() {
@@ -195,7 +196,12 @@
                     }, 4000);
                 }
             };
-        };
+        }
+
+        window.villaApp = createVillaApp;
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('villaApp', createVillaApp);
+        });
     </script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -361,7 +367,7 @@
         }
     </style>
 </head>
-<body x-data="villaApp()" @scroll.window="isScrolled = window.scrollY > 40" class="relative selection:bg-sand-300 selection:text-swiss-ink">
+<body x-data="villaApp()" x-init="startHeroAutoplay()" @scroll.window="isScrolled = window.scrollY > 40" class="relative selection:bg-sand-300 selection:text-swiss-ink">
 
     <!-- Fixed Top Bar & Announcement Header -->
     <header class="sticky top-0 z-40 bg-swiss-bg border-b swiss-border transition-all duration-300 ease-in-out">
