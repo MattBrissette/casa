@@ -36,6 +36,7 @@
                 inquirySubmitted: false,
                 activeGalleryTitle: '',
                 activeGalleryImages: [],
+                lightboxImageLoading: false,
                 footerFormSubmitted: false,
                 footerForm: {
                     name: '',
@@ -51,22 +52,22 @@
                     {
                         title: 'Sunset over Santa Teresa',
                         tag: '09°38\'N 85°09\'W · HILLTOP VISTA',
-                        image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80'
+                        image: 'https://mbrissette.x02.me/i/2SMTF.webp'
                     },
                     {
                         title: 'Infinity Pool & Ocean Horizon',
                         tag: 'ELEVATION 140M · OCEAN VIEW',
-                        image: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1600&q=80'
+                        image: 'https://mbrissette.x02.me/i/V9JV.webp'
                     },
                     {
                         title: 'Balinese Open Great Room',
                         tag: 'OPEN CONCEPT · INDOOR-OUTDOOR',
-                        image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80'
+                        image: 'https://mbrissette.x02.me/i/V7T3.webp'
                     },
                     {
                         title: 'Casita Valley & Jungle Retreat',
                         tag: 'JUNGLE CANOPY · TROPICAL SANCTUARY',
-                        image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1600&q=80'
+                        image: 'https://mbrissette.x02.me/i/QVG6JJ.webp'
                     }
                 ],
 
@@ -83,7 +84,7 @@
                     this.pauseHeroAutoplay();
                     this.heroTimer = setInterval(() => {
                         this.activeHeroIndex = (this.activeHeroIndex + 1) % this.heroSlides.length;
-                    }, 4000);
+                    }, 2500);
                 },
 
                 pauseHeroAutoplay() {
@@ -95,47 +96,76 @@
 
                 galleries: {
                     'great-room': {
-                        title: 'Great room and gardens (16 images)',
+                        title: 'Great room and gardens',
                         images: [
-                            'https://mbrissette.x02.me/i/RET2AG.webp',
-                            'https://mbrissette.x02.me/i/8DP7P.webp',
-                            'https://mbrissette.x02.me/i/RET2AG.webp',
-                            'https://mbrissette.x02.me/i/8DP7P.webp',
-                            'https://mbrissette.x02.me/i/RET2AG.webp',
-                            'https://mbrissette.x02.me/i/8DP7P.webp',
-                            'https://mbrissette.x02.me/i/RET2AG.webp',
-                            'https://mbrissette.x02.me/i/8DP7P.webp',
-                            'https://mbrissette.x02.me/i/RET2AG.webp',
-                            'https://mbrissette.x02.me/i/8DP7P.webp',
-                            'https://mbrissette.x02.me/i/RET2AG.webp',
-                            'https://mbrissette.x02.me/i/8DP7P.webp',
-                            'https://mbrissette.x02.me/i/RET2AG.webp',
-                            'https://mbrissette.x02.me/i/8DP7P.webp',
-                            'https://mbrissette.x02.me/i/RET2AG.webp',
-                            'https://mbrissette.x02.me/i/8DP7P.webp'
+                            'https://mbrissette.x02.me/i/CYMV.webp',
+                            'https://mbrissette.x02.me/i/9NHV.webp',
+                            'https://mbrissette.x02.me/i/9BXTNV.webp',
+                            'https://mbrissette.x02.me/i/UB7T.webp',
+                            'https://mbrissette.x02.me/i/BMWCQH.webp',
+                            'https://mbrissette.x02.me/i/RVHC8P.webp',
+                            'https://mbrissette.x02.me/i/X92J4.webp',
+                            'https://mbrissette.x02.me/i/53P3K.webp',
+                            'https://mbrissette.x02.me/i/TYDJY.webp',
+                            'https://mbrissette.x02.me/i/PXKZW.webp',
+                            'https://mbrissette.x02.me/i/YQX7W.webp',
+                            'https://mbrissette.x02.me/i/ZQ5VQT.webp',
+                            'https://mbrissette.x02.me/i/FR65.webp',
+                            'https://mbrissette.x02.me/i/TZFCU.webp',
+                            'https://mbrissette.x02.me/i/AJ8R5.webp',
+                            'https://mbrissette.x02.me/i/N3GYP.webp'
                         ]
                     },
                     'bedrooms': {
-                        title: 'Lower-floor bedrooms and baths (15 images)',
-                        images: Array.from({length: 15}, (_, i) => [
-                            'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1200&q=80',
-                            'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80',
-                            'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1200&q=80'
-                        ][i % 3])
+                        title: 'Lower-floor bedrooms and baths',
+                        images: [
+                            'https://mbrissette.x02.me/i/BYGFB.webp',
+                            'https://mbrissette.x02.me/i/U9KR.webp',
+                            'https://mbrissette.x02.me/i/WUK2B.webp',
+                            'https://mbrissette.x02.me/i/R4QD.webp',
+                            'https://mbrissette.x02.me/i/AKKN.webp',
+                            'https://mbrissette.x02.me/i/K9VH6.webp',
+                            'https://mbrissette.x02.me/i/37SK5F.webp',
+                            'https://mbrissette.x02.me/i/PR7Z.webp',
+                            'https://mbrissette.x02.me/i/DJJG.webp',
+                            'https://mbrissette.x02.me/i/MH49P.webp',
+                            'https://mbrissette.x02.me/i/AUFCE.webp',
+                            'https://mbrissette.x02.me/i/FQQDW.webp',
+                            'https://mbrissette.x02.me/i/6Q5E3.webp',
+                            'https://mbrissette.x02.me/i/RSRR.webp',
+                            'https://mbrissette.x02.me/i/REDK2.webp'
+                        ]
                     },
                     'ultra-suite': {
-                        title: 'Ultra Suite addition (12 images)',
-                        images: Array.from({length: 12}, (_, i) => [
-                            'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80',
-                            'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80'
-                        ][i % 2])
+                        title: 'Ultra Suite addition',
+                        images: [
+                            'https://mbrissette.x02.me/i/K22K5.webp',
+                            'https://mbrissette.x02.me/i/4C859P.webp',
+                            'https://mbrissette.x02.me/i/VFSVGH.webp',
+                            'https://mbrissette.x02.me/i/MRTZ.webp',
+                            'https://mbrissette.x02.me/i/Z7VXA.webp',
+                            'https://mbrissette.x02.me/i/4XHEUJ.webp',
+                            'https://mbrissette.x02.me/i/UHJ47.webp',
+                            'https://mbrissette.x02.me/i/S9Y5.webp',
+                            'https://mbrissette.x02.me/i/FB97V.webp',
+                            'https://mbrissette.x02.me/i/Z8YQBZ.webp',
+                            'https://mbrissette.x02.me/i/VAWQG.webp',
+                            'https://mbrissette.x02.me/i/GN634.webp'
+                        ]
                     },
                     'casita': {
-                        title: 'Casita la Onda (10 images)',
-                        images: Array.from({length: 10}, (_, i) => [
-                            'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',
-                            'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=80'
-                        ][i % 2])
+                        title: 'Casita la Onda',
+                        images: [
+                            'https://mbrissette.x02.me/i/33Q9Z9.webp',
+                            'https://mbrissette.x02.me/i/32WNN.webp',
+                            'https://mbrissette.x02.me/i/2ANJK.webp',
+                            'https://mbrissette.x02.me/i/VGCF8J.webp',
+                            'https://mbrissette.x02.me/i/WS368.webp',
+                            'https://mbrissette.x02.me/i/9EHM.webp',
+                            'https://mbrissette.x02.me/i/HVM2.webp',
+                            'https://mbrissette.x02.me/i/8YHDJE.webp',
+                            'https://mbrissette.x02.me/i/7V23PB.webp'
+                        ]
                     }
                 },
 
@@ -143,6 +173,7 @@
                     this.currentLightboxImg = imgUrl;
                     this.currentGalleryList = [imgUrl];
                     this.currentLightboxIdx = 0;
+                    this.lightboxImageLoading = true;
                     this.lightboxOpen = true;
                     this.$nextTick(() => lucide.createIcons());
                 },
@@ -151,24 +182,53 @@
                     this.currentGalleryList = this.activeGalleryImages;
                     this.currentLightboxIdx = idx;
                     this.currentLightboxImg = this.activeGalleryImages[idx];
+                    this.lightboxImageLoading = true;
                     this.lightboxOpen = true;
+                    this.preloadAdjacentImages();
                     this.$nextTick(() => lucide.createIcons());
                 },
 
                 nextLightboxImage() {
                     if (!this.currentGalleryList.length) return;
+                    this.lightboxImageLoading = true;
                     this.currentLightboxIdx = (this.currentLightboxIdx + 1) % this.currentGalleryList.length;
                     this.currentLightboxImg = this.currentGalleryList[this.currentLightboxIdx];
+                    this.preloadAdjacentImages();
                 },
 
                 prevLightboxImage() {
                     if (!this.currentGalleryList.length) return;
+                    this.lightboxImageLoading = true;
                     this.currentLightboxIdx = (this.currentLightboxIdx - 1 + this.currentGalleryList.length) % this.currentGalleryList.length;
                     this.currentLightboxImg = this.currentGalleryList[this.currentLightboxIdx];
+                    this.preloadAdjacentImages();
+                },
+
+                preloadAdjacentImages() {
+                    if (!this.currentGalleryList || this.currentGalleryList.length <= 1) return;
+                    const nextIdx = (this.currentLightboxIdx + 1) % this.currentGalleryList.length;
+                    const prevIdx = (this.currentLightboxIdx - 1 + this.currentGalleryList.length) % this.currentGalleryList.length;
+                    const preNext = new Image();
+                    preNext.src = this.currentGalleryList[nextIdx];
+                    const prePrev = new Image();
+                    prePrev.src = this.currentGalleryList[prevIdx];
                 },
 
                 openVideoModal() {
                     this.videoModalOpen = true;
+                    this.$nextTick(() => {
+                        const vid = document.getElementById('casitaVideo');
+                        if (vid) vid.play().catch(() => {});
+                        lucide.createIcons();
+                    });
+                },
+
+                closeVideoModal() {
+                    this.videoModalOpen = false;
+                    const vid = document.getElementById('casitaVideo');
+                    if (vid) {
+                        vid.pause();
+                    }
                 },
 
                 openGallery(key) {
@@ -337,22 +397,20 @@
             }
         }
 
-        /* Parallax Image Drift Engine */
-        .parallax-frame {
-            overflow: hidden;
-            position: relative;
-            border-radius: 4px;
-        }
-        .parallax-img {
-            will-change: transform;
-            transform: scale(1.18) translate3d(0, 0, 0);
-            transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1);
-            border-radius: 4px;
-        }
-
         /* Fixed Footer Reveal Shadow */
         .curtain-shadow {
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35), 0 0 1px 1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Image Skeleton Loading Shimmer & Progressive Reveal */
+        @keyframes shimmerPlaceholder {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .img-skeleton {
+            background: linear-gradient(90deg, #F3EDE2 25%, #FAF8F5 50%, #F3EDE2 75%);
+            background-size: 200% 100%;
+            animation: shimmerPlaceholder 2s ease-in-out infinite;
         }
 
         /* Custom Scrollbar */
@@ -398,7 +456,7 @@
                     <a href="#reviews" class="hover:text-[#AA874B] transition-colors">REVIEWS</a>
                 </nav>
 
-                <a href="https://koorarentals.com/listing/casa-la-onda/" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center space-x-2 bg-[#AA874B] text-sand-50 px-6 py-2.5 rounded-[2px] text-xs tracking-luxury font-medium hover:bg-swiss-ink transition-all duration-300 ease-in-out shadow-sm group">
+                <a href="https://www.airbnb.ca/rooms/822399920616053489" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center space-x-2 bg-[#AA874B] text-sand-50 px-6 py-2.5 rounded-[2px] text-xs tracking-luxury font-medium hover:bg-swiss-ink transition-all duration-300 ease-in-out shadow-sm group">
                     <span>BOOK YOUR STAY</span>
                     <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </a>
@@ -447,7 +505,7 @@
             </div>
 
             <div class="pt-2">
-                <a href="https://koorarentals.com/listing/casa-la-onda/" 
+                <a href="https://www.airbnb.ca/rooms/822399920616053489" 
                    target="_blank" 
                    rel="noopener noreferrer" 
                    class="w-full flex items-center justify-center space-x-2 text-center text-xs uppercase tracking-luxury font-medium bg-[#AA874B] text-sand-50 py-3.5 rounded-[2px] hover:bg-swiss-ink transition-colors duration-300 ease-in-out shadow-sm">
@@ -504,18 +562,19 @@
                     <!-- Architectural Framing Underlay Mat -->
                     <div class="hidden sm:block absolute -inset-2.5 lg:-inset-3.5 bg-sand-200/70 border swiss-border rounded-[4px] -z-10 translate-x-2.5 translate-y-2.5 pointer-events-none"></div>
 
-                    <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] xl:aspect-[16/11] min-h-[360px] sm:min-h-[460px] lg:min-h-[540px] xl:min-h-[580px] rounded-[4px] border swiss-border bg-swiss-card shadow-2xl group overflow-hidden"
-                         @mouseenter="pauseHeroAutoplay()"
-                         @mouseleave="startHeroAutoplay()">
+                    <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] xl:aspect-[16/11] min-h-[360px] sm:min-h-[460px] lg:min-h-[540px] xl:min-h-[580px] rounded-[4px] border swiss-border bg-swiss-card shadow-2xl group overflow-hidden">
                         
                         <!-- Slides Container with Ken Burns Effect -->
                         <template x-for="(slide, index) in heroSlides" :key="index">
-                            <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out cursor-pointer"
+                            <div class="absolute inset-0 transition-opacity duration-700 ease-in-out cursor-pointer img-skeleton"
                                  :class="activeHeroIndex === index ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'"
                                  @click="openLightbox(slide.image)">
                                 <img :src="slide.image" 
                                      :alt="slide.title"
-                                     class="w-full h-full object-cover transition-transform duration-[6000ms] ease-out rounded-[4px]"
+                                     :loading="index === 0 ? 'eager' : 'lazy'"
+                                     decoding="async"
+                                     onload="this.classList.remove('opacity-0')"
+                                     class="w-full h-full object-cover transition-all duration-[6000ms] ease-out rounded-[4px] opacity-0"
                                      :class="activeHeroIndex === index ? 'scale-105 translate-x-0' : 'scale-100'" />
                                 
                                 <!-- Subtle Gradient Vignette -->
@@ -617,9 +676,9 @@
         <!-- Property Sections & Image Collections -->
         <section id="gallery" class="draw-line-h">
 
-            <!-- SECTION 01: Great room and gardens -->
+            <!-- PART 1: Great room and gardens -->
             <article class="draw-line-h grid grid-cols-1 lg:grid-cols-12">
-                <div class="draw-line-v lg:col-span-5 p-8 sm:p-12 lg:p-16 border-b lg:border-b-0 swiss-border flex flex-col justify-between space-y-8">
+                <div class="draw-line-v lg:col-span-5 p-8 sm:p-12 lg:p-16 border-b lg:border-b-0 swiss-border flex flex-col justify-between space-y-8 bg-swiss-bg">
                     <div class="space-y-6">
                         <h2 class="text-3xl sm:text-4xl font-light uppercase tracking-tight text-swiss-ink">
                             Great room and gardens
@@ -629,8 +688,15 @@
                         </p>
                     </div>
 
-                    <div class="draw-line-t pt-6 flex items-center justify-between">
-                        <button @click="openGallery('great-room')" class="inline-flex items-center space-x-2 text-xs uppercase tracking-luxury font-medium bg-[#AA874B] text-sand-50 px-6 py-3 rounded-[2px] hover:bg-swiss-ink transition-colors duration-300 ease-in-out">
+                    <div class="draw-line-t pt-6 flex flex-wrap items-center gap-3">
+                        <a href="https://www.airbnb.ca/rooms/822399920616053489" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="inline-flex items-center space-x-2 text-xs uppercase tracking-luxury font-medium bg-[#AA874B] text-sand-50 px-6 py-3 rounded-[2px] hover:bg-swiss-ink transition-all duration-300 ease-in-out group shadow-sm">
+                            <span>BOOK NOW</span>
+                            <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                        </a>
+                        <button @click="openGallery('great-room')" class="inline-flex items-center space-x-2 text-xs uppercase tracking-luxury font-medium border swiss-border bg-swiss-bg text-swiss-ink px-5 py-3 rounded-[2px] hover:bg-sand-200 transition-colors duration-300 ease-in-out">
                             <i data-lucide="grid" class="w-4 h-4"></i>
                             <span>VIEW ALL IMAGES</span>
                         </button>
@@ -638,21 +704,26 @@
                 </div>
 
                 <div class="lg:col-span-7 bg-swiss-bg p-6 sm:p-10 flex items-center justify-center">
-                    <div class="parallax-frame rounded-[4px] relative overflow-hidden border swiss-border group h-[400px] sm:h-[500px] w-full bg-swiss-card cursor-pointer" @click="openGallery('great-room')">
-                        <img src="https://mbrissette.x02.me/i/RET2AG.webp" alt="Great Room and Gardens" class="parallax-img rounded-[4px] w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div class="rounded-[4px] relative overflow-hidden border swiss-border group h-[400px] sm:h-[500px] w-full bg-swiss-card img-skeleton cursor-pointer" @click="openGallery('great-room')">
+                        <img src="https://mbrissette.x02.me/i/CYMV.webp" 
+                             alt="Great Room and Gardens" 
+                             loading="lazy"
+                             decoding="async"
+                             onload="this.classList.remove('opacity-0')"
+                             class="rounded-[4px] w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-0 transition-opacity duration-500" />
                         <div class="absolute inset-0 bg-black/15 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                             <span class="bg-swiss-ink/85 text-sand-50 text-xs tracking-luxury uppercase px-4 py-2 rounded-[2px] backdrop-blur-sm flex items-center space-x-2">
                                 <i data-lucide="grid" class="w-3.5 h-3.5 text-[#AA874B]"></i>
-                                <span>VIEW GALLERY (16)</span>
+                                <span>VIEW GALLERY</span>
                             </span>
                         </div>
                     </div>
                 </div>
             </article>
 
-            <!-- SECTION 02: Lower-floor bedrooms and baths -->
+            <!-- PART 2: Lower-floor bedrooms and baths -->
             <article class="draw-line-h grid grid-cols-1 lg:grid-cols-12">
-                <div class="draw-line-v lg:col-span-5 p-8 sm:p-12 lg:p-16 border-b lg:border-b-0 swiss-border flex flex-col justify-between space-y-8">
+                <div class="draw-line-v lg:col-span-5 p-8 sm:p-12 lg:p-16 border-b lg:border-b-0 swiss-border flex flex-col justify-between space-y-8 bg-swiss-bg">
                     <div class="space-y-6">
                         <h2 class="text-3xl sm:text-4xl font-light uppercase tracking-tight text-swiss-ink">
                             Lower-floor bedrooms and baths
@@ -662,8 +733,8 @@
                         </p>
                     </div>
 
-                    <div class="draw-line-t pt-6 flex items-center justify-between">
-                        <button @click="openGallery('bedrooms')" class="inline-flex items-center space-x-2 text-xs uppercase tracking-luxury font-medium bg-[#AA874B] text-sand-50 px-6 py-3 rounded-[2px] hover:bg-swiss-ink transition-colors duration-300 ease-in-out">
+                    <div class="draw-line-t pt-6 flex flex-wrap items-center gap-3">
+                        <button @click="openGallery('bedrooms')" class="inline-flex items-center space-x-2 text-xs uppercase tracking-luxury font-medium border swiss-border bg-swiss-bg text-swiss-ink px-5 py-3 rounded-[2px] hover:bg-sand-200 transition-colors duration-300 ease-in-out">
                             <i data-lucide="grid" class="w-4 h-4"></i>
                             <span>VIEW ALL IMAGES</span>
                         </button>
@@ -671,20 +742,25 @@
                 </div>
 
                 <div class="lg:col-span-7 bg-swiss-bg p-6 sm:p-10 flex items-center justify-center">
-                    <div class="parallax-frame rounded-[4px] relative overflow-hidden border swiss-border group h-[400px] sm:h-[500px] w-full bg-swiss-card cursor-pointer" @click="openGallery('bedrooms')">
-                        <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1200&q=80" alt="Lower-floor bedrooms and baths" class="parallax-img rounded-[4px] w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div class="rounded-[4px] relative overflow-hidden border swiss-border group h-[400px] sm:h-[500px] w-full bg-swiss-card img-skeleton cursor-pointer" @click="openGallery('bedrooms')">
+                        <img src="https://mbrissette.x02.me/i/BYGFB.webp" 
+                             alt="Lower-floor bedrooms and baths" 
+                             loading="lazy"
+                             decoding="async"
+                             onload="this.classList.remove('opacity-0')"
+                             class="rounded-[4px] w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-0 transition-opacity duration-500" />
                         <div class="absolute inset-0 bg-black/15 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                             <span class="bg-swiss-ink/85 text-sand-50 text-xs tracking-luxury uppercase px-4 py-2 rounded-[2px] backdrop-blur-sm flex items-center space-x-2">
                                 <i data-lucide="grid" class="w-3.5 h-3.5 text-[#AA874B]"></i>
-                                <span>VIEW GALLERY (15)</span>
+                                <span>VIEW GALLERY</span>
                             </span>
                         </div>
                     </div>
                 </div>
             </article>
 
-            <!-- SECTION 03: Ultra Suite addition -->
-            <article class="draw-line-h grid grid-cols-1 lg:grid-cols-12">
+            <!-- PART 3: Ultra Suite addition -->
+            <article class="draw-line-h grid grid-cols-1 lg:grid-cols-12 bg-swiss-bg">
                 <div class="draw-line-v lg:col-span-5 p-8 sm:p-12 lg:p-16 border-b lg:border-b-0 swiss-border flex flex-col justify-between space-y-8">
                     <div class="space-y-6">
                         <h2 class="text-3xl sm:text-4xl font-light uppercase tracking-tight text-swiss-ink">
@@ -698,8 +774,15 @@
                         </p>
                     </div>
 
-                    <div class="draw-line-t pt-6 flex items-center justify-between">
-                        <button @click="openGallery('ultra-suite')" class="inline-flex items-center space-x-2 text-xs uppercase tracking-luxury font-medium bg-[#AA874B] text-sand-50 px-6 py-3 rounded-[2px] hover:bg-swiss-ink transition-colors duration-300 ease-in-out">
+                    <div class="draw-line-t pt-6 flex flex-wrap items-center gap-3">
+                        <a href="https://airbnb.com/h/casalaonda-ultra" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="inline-flex items-center space-x-2 text-xs uppercase tracking-luxury font-medium bg-[#AA874B] text-sand-50 px-6 py-3 rounded-[2px] hover:bg-swiss-ink transition-all duration-300 ease-in-out group shadow-sm">
+                            <span>BOOK NOW</span>
+                            <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                        </a>
+                        <button @click="openGallery('ultra-suite')" class="inline-flex items-center space-x-2 text-xs uppercase tracking-luxury font-medium border swiss-border bg-swiss-bg text-swiss-ink px-5 py-3 rounded-[2px] hover:bg-sand-200 transition-colors duration-300 ease-in-out">
                             <i data-lucide="grid" class="w-4 h-4"></i>
                             <span>VIEW ALL IMAGES</span>
                         </button>
@@ -708,22 +791,32 @@
 
                 <div class="lg:col-span-7 bg-[#FAF8F6] p-6 sm:p-10 space-y-8">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="parallax-frame rounded-[4px] relative group cursor-pointer border swiss-border bg-[#FAF8F6] p-2" @click="openGallery('ultra-suite')">
-                            <div class="overflow-hidden h-48 relative rounded-[4px]">
-                                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="Artist Rendering - Ultra Suite Elevation" class="parallax-img rounded-[4px] w-full h-full object-cover filter contrast-[1.05]" />
-                            </div>
-                            <div class="p-2 text-[10px] tracking-wider text-swiss-muted flex justify-between relative z-10 bg-[#FAF8F6] uppercase font-medium">
-                                <span>Render 01</span>
-                                <span>Elevation View</span>
+                        <div class="rounded-[4px] relative group cursor-pointer border swiss-border overflow-hidden bg-sand-200 img-skeleton h-48 sm:h-56" @click="openGallery('ultra-suite')">
+                            <img src="https://mbrissette.x02.me/i/K22K5.webp" 
+                                 alt="Ultra Suite Interior" 
+                                 loading="lazy"
+                                 decoding="async"
+                                 onload="this.classList.remove('opacity-0')"
+                                 class="w-full h-full object-cover filter contrast-[1.05] opacity-0 transition-opacity duration-500 group-hover:scale-105 transition-transform duration-500" />
+                            <div class="absolute inset-0 bg-black/15 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                                <span class="bg-swiss-ink/85 text-sand-50 text-xs tracking-luxury uppercase px-3 py-1.5 rounded-[2px] backdrop-blur-sm flex items-center space-x-2">
+                                    <i data-lucide="grid" class="w-3.5 h-3.5 text-[#AA874B]"></i>
+                                    <span>VIEW GALLERY</span>
+                                </span>
                             </div>
                         </div>
-                        <div class="parallax-frame rounded-[4px] relative group cursor-pointer border swiss-border bg-[#FAF8F6] p-2" @click="openGallery('ultra-suite')">
-                            <div class="overflow-hidden h-48 relative rounded-[4px]">
-                                <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80" alt="Artist Rendering - Living Room View" class="parallax-img rounded-[4px] w-full h-full object-cover filter contrast-[1.05]" />
-                            </div>
-                            <div class="p-2 text-[10px] tracking-wider text-swiss-muted flex justify-between relative z-10 bg-[#FAF8F6] uppercase font-medium">
-                                <span>Render 02</span>
-                                <span>Panoramic Living</span>
+                        <div class="rounded-[4px] relative group cursor-pointer border swiss-border overflow-hidden bg-sand-200 img-skeleton h-48 sm:h-56" @click="openGallery('ultra-suite')">
+                            <img src="https://mbrissette.x02.me/i/4C859P.webp" 
+                                 alt="Ultra Suite Bedroom & View" 
+                                 loading="lazy"
+                                 decoding="async"
+                                 onload="this.classList.remove('opacity-0')"
+                                 class="w-full h-full object-cover filter contrast-[1.05] opacity-0 transition-opacity duration-500 group-hover:scale-105 transition-transform duration-500" />
+                            <div class="absolute inset-0 bg-black/15 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                                <span class="bg-swiss-ink/85 text-sand-50 text-xs tracking-luxury uppercase px-3 py-1.5 rounded-[2px] backdrop-blur-sm flex items-center space-x-2">
+                                    <i data-lucide="grid" class="w-3.5 h-3.5 text-[#AA874B]"></i>
+                                    <span>VIEW GALLERY</span>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -760,23 +853,12 @@
                                 <span class="text-[10px] text-swiss-muted/80 tracking-wide">Estate + Casita</span>
                             </div>
                         </div>
-
-                        <div class="draw-line-t pt-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-                            <span class="text-xs text-swiss-muted font-light">Customized concierge support included with every stay.</span>
-                            <a href="https://koorarentals.com/listing/casa-la-onda/" 
-                               target="_blank" 
-                               rel="noopener noreferrer" 
-                               class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 text-xs uppercase tracking-luxury font-medium bg-[#AA874B] text-sand-50 px-6 py-3 rounded-[2px] hover:bg-swiss-ink transition-all duration-300 ease-in-out shadow-sm group">
-                                <span>CHECK AVAILABILITY</span>
-                                <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </article>
 
-            <!-- SECTION 04: Casita la Onda -->
-            <article class="grid grid-cols-1 lg:grid-cols-12">
+            <!-- PART 4: Casita la Onda -->
+            <article class="grid grid-cols-1 lg:grid-cols-12 bg-swiss-bg">
                 <div class="draw-line-v lg:col-span-5 p-8 sm:p-12 lg:p-16 border-b lg:border-b-0 swiss-border flex flex-col justify-between space-y-8">
                     <div class="space-y-6">
                         <h2 class="text-3xl sm:text-4xl font-light uppercase tracking-tight text-swiss-ink">
@@ -787,8 +869,15 @@
                         </p>
                     </div>
 
-                    <div class="draw-line-t pt-6 flex items-center justify-between">
-                        <button @click="openGallery('casita')" class="inline-flex items-center space-x-2 text-xs uppercase tracking-luxury font-medium bg-[#AA874B] text-sand-50 px-6 py-3 rounded-[2px] hover:bg-swiss-ink transition-colors duration-300 ease-in-out">
+                    <div class="draw-line-t pt-6 flex flex-wrap items-center gap-3">
+                        <a href="https://airbnb.com/h/casitalaonda" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="inline-flex items-center space-x-2 text-xs uppercase tracking-luxury font-medium bg-[#AA874B] text-sand-50 px-6 py-3 rounded-[2px] hover:bg-swiss-ink transition-all duration-300 ease-in-out group shadow-sm">
+                            <span>BOOK NOW</span>
+                            <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                        </a>
+                        <button @click="openGallery('casita')" class="inline-flex items-center space-x-2 text-xs uppercase tracking-luxury font-medium border swiss-border bg-swiss-bg text-swiss-ink px-5 py-3 rounded-[2px] hover:bg-sand-200 transition-colors duration-300 ease-in-out">
                             <i data-lucide="grid" class="w-4 h-4"></i>
                             <span>VIEW ALL IMAGES</span>
                         </button>
@@ -796,13 +885,17 @@
                 </div>
 
                 <div class="lg:col-span-7 bg-swiss-bg p-6 sm:p-10 space-y-6">
-                    <div class="parallax-frame rounded-[4px] relative border swiss-border overflow-hidden group cursor-pointer h-80" @click="openVideoModal()">
-                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80" alt="Casita Jungle Valley" class="parallax-img rounded-[4px] w-full h-full object-cover filter brightness-[0.9]" />
-                        <div class="absolute inset-0 bg-swiss-ink/30 flex flex-col items-center justify-center space-y-3 z-10 pointer-events-none rounded-[4px]">
+                    <div class="rounded-[4px] relative border swiss-border overflow-hidden group cursor-pointer h-80 bg-sand-200 img-skeleton" @click="openVideoModal()">
+                        <img src="https://mbrissette.x02.me/i/UVZ76.webp" 
+                             alt="Casita Jungle Valley" 
+                             loading="lazy"
+                             decoding="async"
+                             onload="this.classList.remove('opacity-0')"
+                             class="rounded-[4px] w-full h-full object-cover filter brightness-[0.9] opacity-0 transition-opacity duration-500 group-hover:scale-105 transition-transform duration-500" />
+                        <div class="absolute inset-0 bg-swiss-ink/30 flex items-center justify-center z-10 pointer-events-none rounded-[4px]">
                             <div class="w-16 h-16 rounded-full bg-sand-50/90 flex items-center justify-center text-swiss-ink group-hover:scale-110 transition-transform shadow-lg">
                                 <i data-lucide="play" class="w-6 h-6 fill-current ml-1"></i>
                             </div>
-                            <span class="text-xs text-sand-50 tracking-luxury uppercase font-medium">WATCH JUNGLE FILM (01:45)</span>
                         </div>
                     </div>
                 </div>
@@ -1129,7 +1222,7 @@
                     <a href="#gallery" class="hover:text-sand-300 transition-colors">THE VILLA</a>
                     <a href="#details" class="hover:text-sand-300 transition-colors">THE EXPERIENCE</a>
                     <a href="#reviews" class="hover:text-sand-300 transition-colors">REVIEWS</a>
-                    <a href="https://koorarentals.com/listing/casa-la-onda/" target="_blank" rel="noopener noreferrer" class="text-[#AA874B] hover:underline">BOOKING</a>
+                    <a href="https://www.airbnb.ca/rooms/822399920616053489" target="_blank" rel="noopener noreferrer" class="text-[#AA874B] hover:underline">BOOKING</a>
                 </div>
             </div>
 
@@ -1176,11 +1269,21 @@
             <i data-lucide="chevron-right" class="w-6 h-6"></i>
         </button>
 
-        <!-- Image Container -->
+        <!-- Image Container with Smooth Preloader -->
         <div class="max-w-6xl max-h-[90vh] flex flex-col items-center relative z-20" @click.stop>
-            <img :src="currentLightboxImg" 
-                 class="max-w-full max-h-[80vh] object-contain rounded-[4px] border swiss-border shadow-2xl transition-all duration-300" 
-                 alt="Full Screen View" />
+            <div class="relative min-w-[280px] min-h-[220px] flex items-center justify-center">
+                <!-- Shimmer Spinner when loading high-res lightbox image -->
+                <div x-show="lightboxImageLoading" 
+                     class="absolute inset-0 flex items-center justify-center z-10 bg-swiss-ink/40 backdrop-blur-sm rounded-[4px]">
+                    <div class="w-8 h-8 border-2 border-sand-300/30 border-t-[#AA874B] rounded-full animate-spin"></div>
+                </div>
+
+                <img :src="currentLightboxImg" 
+                     @load="lightboxImageLoading = false"
+                     decoding="async"
+                     class="max-w-full max-h-[80vh] object-contain rounded-[4px] border swiss-border shadow-2xl transition-all duration-300" 
+                     alt="Full Screen View" />
+            </div>
             
             <div class="flex items-center justify-between w-full max-w-lg mt-4 px-2 font-mono text-xs text-sand-300">
                 <span class="uppercase tracking-wider">CASA LA ONDA ARCHIVAL</span>
@@ -1191,18 +1294,33 @@
 
     <!-- Video Modal -->
     <div x-show="videoModalOpen" 
-         x-transition
-         class="fixed inset-0 z-50 bg-swiss-ink/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-10"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         @keydown.escape.window="closeVideoModal()"
+         @click.self="closeVideoModal()"
+         class="fixed inset-0 z-50 bg-swiss-ink/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-10 select-none"
          style="display: none;">
-        <button @click="videoModalOpen = false" class="absolute top-6 right-6 text-sand-50 hover:text-sand-400 font-mono text-sm flex items-center space-x-2">
-            <span>[ CLOSE FILM ]</span>
-            <i data-lucide="x" class="w-5 h-5"></i>
+        
+        <button @click="closeVideoModal()" 
+                class="absolute top-6 right-6 text-sand-50 hover:text-[#AA874B] transition-colors font-mono text-xs uppercase flex items-center space-x-2 z-30 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-sm border border-white/15 hover:border-white/40 cursor-pointer">
+            <span>CLOSE FILM [ESC]</span>
+            <i data-lucide="x" class="w-4 h-4"></i>
         </button>
-        <div class="w-full max-w-4xl bg-swiss-ink aspect-video border border-stone-800 flex flex-col items-center justify-center p-6 text-center space-y-4">
-            <i data-lucide="video" class="w-12 h-12 text-sand-400"></i>
-            <h4 class="font-mono text-sm uppercase text-sand-50">CASITA LA ONDA — CINEMATIC JUNGLE TOUR</h4>
-            <p class="font-mono text-xs text-sand-400 max-w-md">Expansive views over a jungle valley where Ernest Hemingway would pen a novel.</p>
-            <span class="px-4 py-2 bg-sand-200 text-swiss-ink font-mono text-xs uppercase font-medium rounded-[50px]">PREVIEW SIMULATION MODE</span>
+
+        <div class="w-full max-w-5xl bg-black rounded-[4px] border swiss-border overflow-hidden shadow-2xl relative aspect-video flex items-center justify-center" @click.stop>
+            <video id="casitaVideo" 
+                   class="w-full h-full object-contain" 
+                   controls 
+                   playsinline 
+                   preload="metadata" 
+                   poster="https://mbrissette.x02.me/i/UVZ76.webp"
+                   src="https://mbrissette.x02.me/i/W7CJYA.mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </div>
 
@@ -1224,8 +1342,12 @@
         <div class="max-w-7xl mx-auto p-6 sm:p-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             <template x-for="(img, idx) in activeGalleryImages" :key="idx">
                 <div class="border swiss-border p-2 bg-swiss-card group cursor-pointer rounded-[4px]" @click="openLightboxFromGallery(idx)">
-                    <div class="overflow-hidden h-64 relative rounded-[4px]">
-                        <img :src="img" class="w-full h-full object-cover rounded-[4px] group-hover:scale-105 transition-transform duration-500" />
+                    <div class="overflow-hidden h-64 relative rounded-[4px] bg-sand-200 img-skeleton">
+                        <img :src="img" 
+                             loading="lazy" 
+                             decoding="async"
+                             onload="this.classList.remove('opacity-0')"
+                             class="w-full h-full object-cover rounded-[4px] group-hover:scale-105 transition-all duration-500 opacity-0" />
                         <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-[4px]">
                             <span class="bg-swiss-ink/80 text-sand-50 text-[11px] font-mono px-3 py-1 rounded-[50px] flex items-center space-x-1 backdrop-blur-sm">
                                 <i data-lucide="maximize-2" class="w-3 h-3"></i>
@@ -1299,39 +1421,15 @@
                 });
             }
 
-            // Parallax Drift Engine
-            const parallaxFrames = document.querySelectorAll('.parallax-frame');
-
-            function updateParallax() {
-                if (!parallaxFrames.length) return;
-                const vh = window.innerHeight;
-
-                parallaxFrames.forEach((frame) => {
-                    const rect = frame.getBoundingClientRect();
-                    if (rect.bottom > -80 && rect.top < vh + 80) {
-                        const elementCenter = rect.top + rect.height / 2;
-                        const distFromCenter = elementCenter - vh / 2;
-                        const translateY = distFromCenter * 0.08;
-                        const img = frame.querySelector('.parallax-img');
-                        if (img) {
-                            img.style.transform = `scale(1.18) translate3d(0, ${translateY}px, 0)`;
-                        }
-                    }
-                });
-            }
-
             lenis.on('scroll', () => {
                 updateScrollReveal();
-                updateParallax();
             });
 
             window.addEventListener('scroll', () => {
                 updateScrollReveal();
-                updateParallax();
             }, { passive: true });
 
             updateScrollReveal();
-            updateParallax();
 
             // Fixed Footer Reveal dynamic margin adjustment
             const mainContent = document.getElementById('main-content');
@@ -1388,7 +1486,6 @@
             function raf(time) {
                 lenis.raf(time);
                 updateScrollReveal();
-                updateParallax();
                 requestAnimationFrame(raf);
             }
 
